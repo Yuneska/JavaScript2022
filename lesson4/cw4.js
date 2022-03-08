@@ -40,7 +40,7 @@ function maxNum(array) {
 {
     console.log('Максимальне число в масиві:',maxNum(arr))
 }
-;
+
 document.write('Максимальне число в масиві:',maxNum(arr));
 
 // 4 Створити функцію яка повертає найменьше число з масиву
@@ -57,7 +57,7 @@ function minNum(array) {
 {
     console.log('Мінімальне число в масиві:',minNum(arr))
 }
-;
+
 document.write('Мінімальне число в масиві:',minNum(arr))
 
 // 5 Створити функцію яка приймає масив чисел, сумує значення елементів масиву та повертає його.
@@ -112,7 +112,7 @@ function maxMin(ads) {
 function domRandom (length){
 let aar = [];
 for (let i=0; i<length; i++){aar.push(Math.random()*100)}
-return aar};
+return aar}
 document.write('Рандомні числа:',domRandom(7))
 
 
@@ -122,24 +122,14 @@ document.write('Рандомні числа:',domRandom(7))
 function ranRandom (length, limit){
     let ary=[];
     for (let i=0; i<length; i++){ary.push(Math.random()*limit)}
-    return ary};
+    return ary}
 document.write('Лімітовані рандомні числа:',ranRandom(3,5))
 
 // 10 Функція приймає масив та робить з нього новий масив в зворотньому порядку. [1,2,3] -> [3, 2, 1].
-let ara=[10,20,30,40,50]
 function reverse(array){
-    for (let i=ara.length-1, j=0; i>=0; i--, j++)
-    { newAra[j]=newAra[i]
-    return newAra;}
+    let araNew =[];
+    for (let i=array.length-1, j=0; i>=0; i--, j++)
+    { araNew[j]=array[i];}
+    return araNew;
 }
-
-
-// - Функція приймає масив та робить з нього новий масив в зворотньому порядку. [1,2,3] -> [3, 2, 1].
-// function reverse(arr) {
-//     let arr = [];
-//     for (let i = arr.length - 1, ri = 0; i >= 0; i--, ri++) {
-//         newArr[ri] = newArr[i];
-//     }
-//
-//     return newArr;
-// }
+console.log(reverse([13,23,33]))
