@@ -46,7 +46,7 @@ function paragraph(argument) {
 
 paragraph('Текст')
 
-function parag(argument) {
+function parag (argument) {
     for (let i = 0; i <= 5; i++) {
         document.write(`<p>${i} ${argument}</p>`)
     }
@@ -79,7 +79,7 @@ list2(`аргументований текст`, 3)
 
 // 8 Створити функцію яка приймає масив примітивних елементів (числа,стрінги,булеві), та будує для них
 // список
-array = ['okten', true, 10, 'web', 'peace', 55];
+let array = ['okten', true, 10, 'web', 'peace', 55];
 
 function aRr(arg) {
     document.write(`<ul>`)
@@ -93,7 +93,7 @@ aRr(array)
 
 // 9 Створити функцію яка приймає масив об'єктів з наступними полями id,name,age , та виводить їх в
 // документ. Для кожного об'єкту окремий блок.
-array2 = [{id: 1, name: 'Nikita', age: 23}, {id: 2, name: 'Luna', age: 27},
+let array2 = [{id: 1, name: 'Nikita', age: 23}, {id: 2, name: 'Luna', age: 27},
     {id: 3, name: 'Beatris', age: 14}];
 
 function object(arg) {
