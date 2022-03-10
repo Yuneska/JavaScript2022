@@ -121,9 +121,9 @@ document.write(random2(3, 50))
 // 10 Функція приймає масив та робить з нього новий масив в зворотньому порядку. [1,2,3] -> [3, 2, 1].
 const reverse = (array) => {
     let arrRev = [];
-    for (let i = arr.length - 1, j = 0; i>= 0; i--, j++) {
+    for (let i = arr.length - 1, j = 0; i >= 0; i--, j++) {
         arrRev[j] = array[i]
     }
     return arrRev
 }
-console.log('Реверсивний масив : ',reverse([8,7,6,5]))
+console.log('Реверсивний масив : ', reverse([8, 7, 6, 5]))
