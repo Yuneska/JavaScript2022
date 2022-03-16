@@ -73,14 +73,14 @@ let str5 = 'web web web'
 let uPPer = (str) => {
     if (!str)
         return str;
-    return str[0].toUpperCase()+ str.slice(1)
+    return str[0].toUpperCase() + str.slice(1)
 }
 console.log(uPPer(str5))
 document.write(uPPer(str5))
 
 // 9 Напишіть функцію capitalize(str), яка повертає рядок, у якому кожне слово починається з великої літери.
-let capitalize=(str)=> {
-    return str.split(' ').map(word=>word.charAt(0).toUpperCase()+word.slice(1)).join(' ');
+let capitalize = (str) => {
+    return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 };
 console.log(capitalize(str3))
 document.write(capitalize(str3))
