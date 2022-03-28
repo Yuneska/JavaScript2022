@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="text">Text</div>
+<button id="hide">Click me</button>
+<input type="number" id="age"> Введіть ваш вік </input>
+<button type="button" > Send</button>
+
+<script>
+// 1) Создать произвольный елемент с id = text.  Используя JavaScript, сделайте так, чтобы при клике на -->
+// кнопку исчезал элемент с id="text"
+let target=document.getElementById('text');
+target.onclick=function (){
+this.style.display='none'
+}
+
+// 2) Создайте кнопку, при клике на которую, она будет скрывать сама себя.
+let hide=document.getElementById('hide')
+hide.onclick=function(){
+    this.hidden=true
+}
+
+// 3) Створити інпут який приймає вік людини та кнопку яка підтверджує дію.При натисканні на кнопку зчитати -->
+// інформацію з інпуту та перевірити вік чи меньше він ніж 18, та повідомити про це користувача-->
+let num=document.getElementsByTagName('input')
+let btn=document.getElementsByTagName('button')
+
+
+// 4) Создайте меню, которое раскрывается/сворачивается при клике-->
+
+
+// 5) Создать список комментариев , пример объекта коментария - {title : 'lorem', body:'lorem ipsum dolo-->
+// sit ameti'}.-->
+// Вывести список комментариев в документ, каждый в своем блоке.-->
+// Добавьте каждому комментарию по кнопке для сворачивания его body.-->
+</script>
+</body>
+</html>
