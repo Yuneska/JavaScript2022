@@ -8,20 +8,15 @@
     <title>Document</title>
 </head>
 <style>
-    *{
-        margin:5px
-    }
-    .menu {
-        cursor: pointer;
+    * {
+        margin: 5px
     }
 
-    .klik.hidden li {
-        display: none;
+    .menu.hidden ul {
+        display: none
     }
 
-    . {
-        display: none;
-    }
+
 </style>
 <body>
 
@@ -33,13 +28,16 @@
 <button type="button" id="btn">Вкажіть ваш вік</button>
 <hr>
 <div class="menu">
-    <ul class="click">Click here</ul>
-    <li>Option 1</li>
-    <li>Option 2</li>
-    <li>Option 3</li>
+    <h class="click">Click menu</h>
+    <ul>
+        <li>Option 1</li>
+        <li>Option 2</li>
+        <li>Option 3</li>
+    </ul>
 </div>
 
 <script>
+
     // 1) Создать произвольный елемент с id = text.  Используя JavaScript, сделайте так, чтобы при клике на -->
     // кнопку исчезал элемент с id="text"
     let target = document.getElementById('text');
@@ -57,7 +55,7 @@
     // інформацію з інпуту та перевірити вік чи меньше він ніж 18, та повідомити про це користувача
     let num = document.getElementById('age')
     let btn = document.getElementById('btn')
-    btn.onclick = function () {
+    btn.addEventListener('click', function () {
         if (!num.value) {
             alert('Заново введіть ваш вік')
         } else if (num.value >= 18) {
@@ -65,19 +63,32 @@
         } else {
             alert('Доступ заборонений')
         }
-    }
+    })
 
     // 4) Создайте меню, которое раскрывается/сворачивается при клике
     let menu = document.querySelector('.menu')
     let klik = menu.querySelector('.click')
-    klik.onclick = function () {
+    klik.addEventListener('click', function () {
         menu.classList.toggle('hidden')
-    }
+    })
 
     // 5) Создать список комментариев , пример объекта коментария -
     // {title : 'lorem', body:'lorem ipsum dolosit ameti'}.
     // Вывести список комментариев в документ, каждый в своем блоке.
     // Добавьте каждому комментарию по кнопке для сворачивания его body.
+    let comments = [{title: 'Lorem', body: 'lorem ipsum dolosit ameti'},
+    {title: 'Lorem', body: 'lorem ipsum dolosit ameti'},
+    {title: 'Lorem', body: 'lorem ipsum dolosit ameti'}]
+
+    let dIv=document.createElement('div')
+    for (const element of comments){
+        let div=document.createElement('div')
+        div.innerText=element.title
+        div.innerText=element.body
+
+        dIv.append('div')
+        document.body.appendChild(dIv)
+    }
 
 </script>
 </body>
