@@ -43,14 +43,14 @@
         let surname = document.forms.form1[1].value;
         let age = document.forms.form2[0].value;
         let status = document.forms.form2[1].value;
-        console.log(username, surname, age, status)
+        console.log(username, surname, age, status);
     }
 
     // 2) Створити 3 инпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій
     // вміст ячеєк. При натисканні кнопки, вся ця інформація зчитується і формується табличка,
     // з відповідним вмістом. (Додатковачастина для завдання).
-    let h = document.createElement('hr')
-    document.body.appendChild(h)
+    let h = document.createElement('hr');
+    document.body.appendChild(h);
 
     let nput1 = document.createElement('input');
     nput1.setAttribute('name', 'riadky');
@@ -85,26 +85,53 @@
                     let column = document.createElement('td');
 
                     column.innerText = `${content}`;
-                    row.appendChild(column)
+                    row.appendChild(column);
                     table.appendChild(row);
-
                 }
             }
         }
 
-        tableGeneration(tr, td, txt)
+        tableGeneration(tr, td, txt);
     })
-
 
     // 3) Сворити масив не цензцрних слів. Сворити інпут текстового типу.
     // Якщо людина вводить слово і воно міститься в масиві не цензурних слів
     // кинути алерт з попередження. Перевірку робити при натисканні на кнопку
+    document.body.appendChild(document.createElement('hr'));
 
+    let mates = ['свинота', 'холера', 'шановний', 'бик'];
+    let npt5 = document.createElement('input');
+    npt5.setAttribute('type', 'text');
+    let btn2 = document.createElement('button');
+    btn2.innerText = 'Check it out';
+    document.body.append(npt5, btn2);
 
+    btn2.addEventListener('click', function () {
+        let word = npt5.value;
+        for (const mat of mates) {
+            if (word.toLowerCase() === mat) {
+                alert(`Від ${mat} чую`)
+                word = '';
+                return;
+            }
+        }
+    })
 
     // 4) Сворити масив не цензцрних слів. Сворити інпут текстового типу. Потрібно перевіряти чи
     // не містить ціле речення в собі погані слова. Кинути алерт з попередженням у випадку якщо містить.
     // Перевірку робити при натисканні на кнопку
+    btn2.addEventListener('click', function () {
+            let sentence = npt5.value;
+            for (const mate of mates) {
+                if (sentence.toLowerCase().includes(mate)) {
+                    alert('Вжито нецензурну лексику!');
+                    sentence = '';
+                    return;
+                }
+            }
+        }
+    )
+
 </script>
 
 
