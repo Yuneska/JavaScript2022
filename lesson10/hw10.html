@@ -16,7 +16,9 @@
         display: none
     }
 
-
+    .closeelement {
+        display: none
+    }
 </style>
 <body>
 
@@ -28,14 +30,14 @@
 <button type="button" id="btn">Вкажіть ваш вік</button>
 <hr>
 <div class="menu">
-    <h class="click">Click menu</h>
+    <button class="click">Click menu</button>
     <ul>
         <li>Option 1</li>
         <li>Option 2</li>
         <li>Option 3</li>
     </ul>
 </div>
-
+<hr>
 <script>
 
     // 1) Создать произвольный елемент с id = text.  Используя JavaScript, сделайте так, чтобы при клике на -->
@@ -76,18 +78,28 @@
     // {title : 'lorem', body:'lorem ipsum dolosit ameti'}.
     // Вывести список комментариев в документ, каждый в своем блоке.
     // Добавьте каждому комментарию по кнопке для сворачивания его body.
-    let comments = [{title: 'Lorem', body: 'lorem ipsum dolosit ameti'},
-    {title: 'Lorem', body: 'lorem ipsum dolosit ameti'},
-    {title: 'Lorem', body: 'lorem ipsum dolosit ameti'}]
+    let comments = [{title: 'Lorem1', body: '1lorem ipsum dolosit ameti1'},
+        {title: 'Lorem22', body: '22lorem ipsum dolosit ameti22'},
+        {title: 'Lorem333', body: '333lorem ipsum dolosit ameti333'}]
 
-    let dIv=document.createElement('div')
-    for (const element of comments){
-        let div=document.createElement('div')
-        div.innerText=element.title
-        div.innerText=element.body
+    let div = document.createElement('div')
+    for (const element of comments) {
+        let h = document.createElement('h')
+        h.innerText = element.title
 
-        dIv.append('div')
-        document.body.appendChild(dIv)
+        let btn = document.createElement('button')
+        btn.innerText = 'Close me'
+
+        let p = document.createElement('p')
+        p.innerText = element.body
+        p.innerHTML = element.body
+
+        div.append(h, p, btn)
+        document.body.appendChild(div)
+
+        btn.onclick = function () {
+            p.classList.add('closeelement')
+        }
     }
 
 </script>
