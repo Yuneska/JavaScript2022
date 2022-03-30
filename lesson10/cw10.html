@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+<script>
+    // 1) Створити 2 форми  по 2 інпути в кожній. Створити кнопку при кліку на яку считується та
+    // виводиться на консоль інформація з цих 2х форм. Кнопка повинна лежати за межами форм
+    // (Щоб уникнути  перезавантаження сторінки) Доступ до інпутів через Forms API.
+    // Отже дайте формі та інпутам всі необхідні атрибути.
+    let form1 = document.createElement('form');
+    form1.setAttribute('name', 'form1');
+    let npt1 = document.createElement('input');
+    npt1.setAttribute('name', 'username');
+    let npt2 = document.createElement('input');
+    npt2.setAttribute('name', 'surname');
+    form1.append(npt1, npt2);
+
+    let form2 = document.createElement('form');
+    form2.setAttribute('name', 'form2',);
+    let npt3 = document.createElement('input');
+    npt3.setAttribute('name', 'age');
+    npt3.setAttribute('type', 'number');
+    let npt4 = document.createElement('input');
+    npt4.setAttribute('name', 'status');
+    npt4.setAttribute('type', 'checkbox');
+    form2.append(npt3, npt4);
+
+    let btn = document.createElement('button');
+    btn.innerText = 'Information about user';
+
+    document.body.append(form1, form2, btn);
+
+    btn.onclick = function () {
+
+        let username = document.forms.form1[0].value;
+        let surname = document.forms.form1[1].value;
+        let age = document.forms.form2[0].value;
+        let status = document.forms.form2[1].value;
+        console.log(username, surname, age, status)
+    }
+
+    // 2) Створити 3 инпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій
+    // вміст ячеєк. При натисканні кнопки, вся ця інформація зчитується і формується табличка,
+    // з відповідним вмістом. (Додатковачастина для завдання).
+    let h = document.createElement('hr')
+    document.body.appendChild(h)
+
+    let nput1 = document.createElement('input');
+    nput1.setAttribute('name', 'riadky');
+
+    let nput2 = document.createElement('input');
+    nput2.setAttribute('name', 'stovbtsi');
+
+    let nput3 = document.createElement('input');
+    nput3.setAttribute('name', 'vmist');
+
+    let btn1 = document.createElement('button');
+    btn1.innerText = 'Create table';
+    document.body.append(nput1, nput2, nput3, btn1);
+
+    btn1.addEventListener('click', function () {
+        let tr = nput1.value;
+        let td = nput2.value;
+        let txt = nput3.value;
+
+        function tableGeneration(rw, clmn, content) {
+            let table = document.createElement('table');
+            let div = document.createElement('div');
+
+            table.style.border = '1px solid black';
+            div.appendChild(table);
+            document.body.appendChild(div);
+
+            for (let i = 0; i < rw; i++) {
+                let row = document.createElement('tr');
+
+                for (let j = 0; j < clmn; j++) {
+                    let column = document.createElement('td');
+
+                    column.innerText = `${content}`;
+                    row.appendChild(column)
+                    table.appendChild(row);
+
+                }
+            }
+        }
+
+        tableGeneration(tr, td, txt)
+    })
+
+
+    // 3) Сворити масив не цензцрних слів. Сворити інпут текстового типу.
+    // Якщо людина вводить слово і воно міститься в масиві не цензурних слів
+    // кинути алерт з попередження. Перевірку робити при натисканні на кнопку
+
+
+
+    // 4) Сворити масив не цензцрних слів. Сворити інпут текстового типу. Потрібно перевіряти чи
+    // не містить ціле речення в собі погані слова. Кинути алерт з попередженням у випадку якщо містить.
+    // Перевірку робити при натисканні на кнопку
+</script>
+
+
+</body>
+</html>
