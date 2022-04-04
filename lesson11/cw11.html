@@ -6,26 +6,68 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-</head>
-<body>
-<!--1) Є масив - -->
-<!--let users = [-->
-<!--{name: 'vasya', age: 31, status: false},-->
-<!--{name: 'petya', age: 30, status: true},-->
-<!--{name: 'kolya', age: 29, status: true},-->
-<!--{name: 'olya', age: 28, status: false},-->
-<!--{name: 'max', age: 30, status: true},-->
-<!--{name: 'anya', age: 31, status: false},-->
-<!--{name: 'oleg', age: 28, status: false},-->
-<!--{name: 'andrey', age: 29, status: true},-->
-<!--{name: 'masha', age: 30, status: true},-->
-<!--{name: 'olya', age: 31, status: false},-->
-<!--{name: 'max', age: 31, status: true}-->
-<!--];-->
-<!--Створити під кожен об'єкт свій блок з конопкою "додати до улюблених" при натисканні на яку об'єкт
- потрапляє до масиву favorites улюблених обраних об'єктів в локальному сховищі.-->
-<!--Створити сторніку favorites.html при переході на яку потрібно вивест в документ всіх обраних
-на попередньому етапі.-->
+    <style>
+        .user {
+            display: flex;
+            margin: 20px;
+        }
 
+        .button {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<script>
+    // Є масив -
+    let users = [
+        {name: 'vasya', age: 31, status: false},
+        {name: 'petya', age: 30, status: true},
+        {name: 'kolya', age: 29, status: true},
+        {name: 'olya', age: 28, status: false},
+        {name: 'max', age: 30, status: true},
+        {name: 'anya', age: 31, status: false},
+        {name: 'oleg', age: 28, status: false},
+        {name: 'andrey', age: 29, status: true},
+        {name: 'masha', age: 30, status: true},
+        {name: 'olya', age: 31, status: false},
+        {name: 'max', age: 31, status: true}
+    ];
+    // Створити під кожен об'єкт свій блок з конопкою "додати до улюблених" при натисканні на яку об'єкт
+    // потрапляє до масиву favorites улюблених обраних об'єктів в локальному сховищі.Створити сторніку
+    // favorites.html при переході на яку потрібно вивест в документ всіх обраних на попередньому етапі.
+
+    for (const user of users) {
+        let divAll = document.createElement('div');
+        let div = document.createElement('div');
+        divAll.setAttribute('name', 'usersall');
+        divAll.appendChild(div);
+        div.innerText=(`${user.name} - ${user.age} - ${user.status}`)
+        let btn = document.createElement('button');
+        btn.innerText = ('Додати дло улюблених');
+        div.appendChild(btn);
+        document.body.appendChild(div);
+
+        btn.onclick=function (){let fav = JSON.parse(localStorage.getItem('favorite'));
+            fav.push(user);
+            localStorage.setItem('favorite', JSON.stringify(fav))};
+
+    }
+
+
+    // const favoritesKey = 'favorites';
+    // localStorage.setItem(favoritesKey, JSON.stringify([]));
+    // const container = document.getElementById('container');
+    //
+    // users.forEach(user => {
+
+
+    //         const favorites = JSON.parse(localStorage.getItem(favoritesKey));
+    //         favorites.push(user);
+    //         localStorage.setItem(favoritesKey, JSON.stringify(favorites));
+    //         btn.disabled = true;
+
+</script>
 </body>
 </html>
