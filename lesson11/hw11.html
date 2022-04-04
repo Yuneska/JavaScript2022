@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<form name="form1">
+    <label>Enter name:
+        <input name="name" type="text">
+    </label>
+    <br>
+    <label>Enter age:
+        <input name="age" type="number">
+        <br>
+        <button id="btn1">Send</button>
+    </label>
+</form>
+<hr>
+<form name="form2">
+    <label>Model:
+        <input name="model" type="text">
+        <br>
+    </label>
+    <label>Type:
+        <input name="type" type="text">
+    </label>
+    <br>
+    <label>Volume:
+        <input name="volume" type="number">
+    </label>
+    <br>
+    <button id="btn2">Send</button>
+</form>
+<body>
+<script>
+    // 1) Створити форму з інпутами для name та age. При відправці форми записати об'єкт в localstorage.
+    let name = document.forms.form1.name;
+    let age = document.forms.form1.age;
+    let btn1 = document.getElementById('btn1');
+
+    btn1.onclick = function () {
+        localStorage.setItem('user', JSON.stringify(`name: ${name.value};  age: ${age.value}`));
+    }
+
+    // 2) Створити форму з інпутами для model,type та volume автівки. При відпарвці форми об'єкти
+    // зберігаються в масиві в локальному сховищі.
+    let mdl = document.forms.form2.model;
+    let tp = document.forms.form2.type;
+    let vlm = document.forms.form2.volume;
+    let btn2 = document.getElementById('btn2');
+
+
+    btn2.addEventListener('click', function () {
+        let array = JSON.parse(localStorage.getItem('cars'));
+        array.push(`{model:${mdl.value}, type:${tp.value}, volume:${vlm.value}}`);
+        localStorage.setItem('cars', JSON.stringify(array));
+    })
+
+</script>
+</body>
+</html>
