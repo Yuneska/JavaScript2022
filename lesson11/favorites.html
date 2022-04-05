@@ -2,12 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
     <title>Title</title>
 </head>
 <body>
 <div id="container"></div>
-<a href="./index.html">Home</a>
-<script src="favorites.js"></script>
+<a href="cw11.html">Натисніть, щоб повернутися до всіх користувачів</a>
 </body>
 </html>
+<script>
+    let fav = JSON.parse(localStorage.getItem('favorite')) || [];
+
+    for (const user of fav) {
+        let div = document.createElement('div');
+        div.innerText = (`${user.name}, ${user.age}, ${user.status}  `);
+        document.body.appendChild(div)
+    }
+</script>
