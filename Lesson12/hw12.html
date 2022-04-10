@@ -6,12 +6,47 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin-left: 5px;
+        }
+
+        .blockofposts {
+            background: hotpink;
+        }
+
+        .post {
+            border: pink 1px solid;
+        }
+
+        .post h2 {
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+
+        .post p {
+            margin-top: 3px;
+        }
+
+        .blockofposts h1 {
+            margin-top: 10px;
+        }
+
+
+        .blockofcomments {
+            background: cornflowerblue;
+        }
+
+        .comment {
+            border: lightskyblue solid 1px;
+        }
+
+    </style>
 </head>
 <body>
-<style>
-
-
-</style>
 <script>
     // 1) Отримати з цього ресурсу відповідь, та вивести в документ об'єкти.
     // Застилізувати, за допомоги css, щоб отримати 5 елементів в рядку.
@@ -42,7 +77,7 @@
     fetch('https://jsonplaceholder.typicode.com/comments')
         .then(response => response.json())
         .then(comments => {
-            let divComments=document.createElement('div');
+            let divComments = document.createElement('div');
             divComments.classList.add('blockofcomments')
 
             for (comment of comments) {
