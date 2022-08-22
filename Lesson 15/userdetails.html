@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>
+    User details page
+</h1>
+<div class="user-details"></div>
+<script>
+    let url=new URL(location.href);
+    let user=JSON.parse(url.searchParams.get('data'));
+    let userDetailsContainer=document.getElementsByClassName('user-details')[0];
+
+    userDetailsContainer.innerText=`${JSON.stringify(user)}`
+    console.log(user)
+</script>
+</body>
+</html>
