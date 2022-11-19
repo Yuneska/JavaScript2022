@@ -140,5 +140,5 @@ while (i<5){
         continue; //3 пропускаємо (continue пропускаємо дію, яку описали)
     }
     n+=i;   //0+1=1; 1+2=3; 3+4=7; 7+5=12
-    console.log(i);
+    console.log(n);
 }
