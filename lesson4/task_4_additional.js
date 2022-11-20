@@ -124,7 +124,7 @@ let ar2 = [2, 3, 4, 5];
 let together = (arr1, arr2) => {
 let newArray=[];
 newArray[j]=arr1[i]+arr2[i];
-    for (let i=0, j=0;i<arr1.length, i<arr2.length, j<newArray.length; i++, j++;){
+    for (let i=0, j=0;i<arr1.length, i<arr2.length, j<newArray.length; i++, j++){
 
     }
 }
@@ -135,19 +135,28 @@ newArray[j]=arr1[i]+arr2[i];
 // [{name: 'Dima', age: 13}, {model: 'Camry'}]  ===> [ name, age, model ]
 let massiv=[{name:'Dima', age: 13}, {model: 'Camry'}];
 let keys=(arr)=>{
-   for (let i=0; i<arr.length; i++){
-        return arr[i].keys
+    let newArray=[];
+   for (let i=0, j=0; i<arr.length; i++){
+       for(const key in arr[i]){
+           newArray[j++]=key;
+       }
     }
+   return newArray
 }
 
-
+console.log(keys(massiv));
 
 // 12) Створити функцію яка приймає масив будь яких объектів, та повертає масив значень всіх обєктів
 // EXAMPLE:
 // [{name: 'Dima', age: 13}, {model: 'Camry'}]  ===> [ Dima, 13, Camry ]
+let mass2=[{name: 'Dima', age: 13}, {model: 'Camry'}]
 let object=(arr)=> {
-    for(const item of arr){
-        let obj=[item.name; item.age, item.model];
-        return obj;
+    let newArray=[];
+    for (let i=0, j=0; i<arr.length; i++){
+        for(const item of arr[i]){
+            newArray[j++]=item
+        }
     }
+    return newArray
 }
+console.log(object(mass2));
