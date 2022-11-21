@@ -122,26 +122,28 @@ let ar1 = [1, 2, 3, 4];
 let ar2 = [2, 3, 4, 5];
 
 let together = (arr1, arr2) => {
-let newArray=[];
-newArray[j]=arr1[i]+arr2[i];
-    for (let i=0, j=0;i<arr1.length, i<arr2.length, j<newArray.length; i++, j++){
-
+    let newArray = [];
+    let dovzhyna = arr1.length >= arr2.length ? arr1 : arr2;
+    for (let i = 0; i < dovzhyna.length; i++) {
+        newArray[i] = (arr1[i] || 0) + (arr2[i] || 0);
     }
+    return newArray
 }
 
+console.log(together(ar1, ar2))
 
 // 11) Створити функцію яка приймає масив будь-яких объектів, та повертає масив ключів всіх обєктів
 // EXAMPLE:
 // [{name: 'Dima', age: 13}, {model: 'Camry'}]  ===> [ name, age, model ]
-let massiv=[{name:'Dima', age: 13}, {model: 'Camry'}];
-let keys=(arr)=>{
-    let newArray=[];
-   for (let i=0, j=0; i<arr.length; i++){
-       for(const key in arr[i]){
-           newArray[j++]=key;
-       }
+let massiv = [{name: 'Dima', age: 13}, {model: 'Camry'}];
+let keys = (arr) => {
+    let newArray = [];
+    for (let i = 0, j = 0; i < arr.length; i++) {
+        for (const key in arr[i]) {
+            newArray[j++] = key;
+        }
     }
-   return newArray
+    return newArray
 }
 
 console.log(keys(massiv));
@@ -149,12 +151,12 @@ console.log(keys(massiv));
 // 12) Створити функцію яка приймає масив будь яких объектів, та повертає масив значень всіх обєктів
 // EXAMPLE:
 // [{name: 'Dima', age: 13}, {model: 'Camry'}]  ===> [ Dima, 13, Camry ]
-let mass2=[{name: 'Dima', age: 13}, {model: 'Camry'}]
-let object=(arr)=> {
-    let newArray=[];
-    for (let i=0, j=0; i<arr.length; i++){
-        for(const item of arr[i]){
-            newArray[j++]=item
+let mass2 = [{name: 'Dima', age: 13}, {model: 'Camry'}]
+let object = (arr) => {
+    let newArray = [];
+    for (let i = 0, j = 0; i < arr.length; i++) {
+        for (const key in arr[i]) {
+            newArray[j++] = arr[i][key];
         }
     }
     return newArray
