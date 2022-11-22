@@ -111,7 +111,10 @@ console.log(changePosition(2, 9, 8, 0, 4)); // 9, 8, 4, 0
 // [1,0,6,0,3] => [1,6,3,0,0]
 // [0,1,2,3,4] => [1,2,3,4,0]
 // [0,0,1,0]   => [1,0,0,0]
-let array2 = [0, 0, 1, 0];
+let array2=[1,0,6,0,3];
+let array3=[0,1,2,3,4];
+let array4 = [0,0,1,0];
+
 const zero = (arr) => {
     let newArr = [];
     let counter = 0;
@@ -129,4 +132,6 @@ const zero = (arr) => {
     }
     console.log(newArr)
 }
-zero(array2)
+zero(array2);
+zero(array3);
+zero(array4)
