@@ -11,9 +11,9 @@ function calculator (a,b,action){
 
     let result=NaN;
     if(action==='+'){
-        result a+b;
+        result= a+b;
     } else if (action==='-'){
-        result a-b;
+        result= a-b;
     }
     return result
 
