@@ -84,3 +84,4 @@ let capitalize = (str) => {
 };
 console.log(capitalize(str3))
 document.write(capitalize(str3))
+//charAt()-повертає символ за заданим індексом
