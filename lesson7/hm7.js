@@ -52,7 +52,7 @@ let arrClient = [new Client(1, 'Nikita', 'Moluboga', 'nikita@gmail.com', 3809919
     new Client(2, 'Alla', 'Koalla', 'all@gmail.com', 380199104353, ['fitness', 'aerobic', 'sport']),
     new Client(3, 'Inesa', 'Stuardesa', 'inesa@gmail.com', 380919135335, ['waacking', 'programming', 'cooking']),
     new Client(4, 'Nelia', 'Vovch', 'nelia@gmail.com', 380199119353, []),
-    new Client(5, 'Vovlodymyr', 'Pih', 'volodymyr@gmail.com', 380933993545, ['football', 'basteball', 'swimming', 'cooking']),
+    new Client(5, 'Volodymyr', 'Pih', 'volodymyr@gmail.com', 380933993545, ['football', 'basteball', 'swimming', 'cooking']),
     new Client(6, 'Stepan', 'Bandera', 'stepan@gmail.com', 380633939232, ['hip-hop']),
     new Client(7, 'Svitlana', 'Bodak', 'svitlana@gmail.com', 380677667432, ['tennis', 'vocals', 'hip-hop']),
     new Client(8, 'Oleksandr', 'Lysenko', 'oleksandr@gmail.com', 380556354678, ['acting']),

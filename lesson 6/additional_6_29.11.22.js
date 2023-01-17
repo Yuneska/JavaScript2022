@@ -84,10 +84,10 @@ let normalizes = (str) => {
 console.log(normalizes(n2))
 
 // 6 Створити функцію, яка генерує масив рандомних числових цілих значень в діапазоні від 0 до 100.
-const random=(length)=>{
-    let arr=[];
-    for(let i=0; i<=length; i++){
-        arr.push(Math.round(Math.random()*100))
+const random = (length) => {
+    let arr = [];
+    for (let i = 0; i <= length; i++) {
+        arr.push(Math.round(Math.random() * 100))
     }
     return arr
 }
@@ -97,23 +97,23 @@ console.log(random(5));
 
 // 7 Створити (або згенерувати, за допомоги попередньої функції) масив рандомних цілих числових значень.
 // Відсортувати його за допомоги sort.
-let sort1=(arr)=>arr.sort((a,b)=>a-b); //a-b за зростання, від більшого до меншого
+let sort1 = (arr) => arr.sort((a, b) => a - b); //a-b за зростання, від більшого до меншого
 console.log(sort1(random(4)));
-let sort2=(arr)=>arr.sort((a,b)=> b-a);
+let sort2 = (arr) => arr.sort((a, b) => b - a);
 console.log(sort2(random(3)));
 
 // 8 Створити (або згенерувати, за допомоги попередньої функції) масив рандомних цілих числових значень.
 // Відфільтрувати  його за допомоги filter, залишивши тільки парні числа (без 0!)
-let filter=(arr)=> arr.filter(value=>value%2 === 0)
+let filter = (arr) => arr.filter(value => value % 2 === 0)
 console.log(filter(random(4)))
 
 // 9 Напишіть функцію capitalize(str), яка повертає рядок, у якому кожне слово починається з великої літери.
-const capitalize=(str)=>str.split(' ').map(word=> word[0].toUpperCase()+ value.slice(1)).join(' ');
+const capitalize = (str) => str.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
 console.log(capitalize(str1));
 
 // 10 Створити функцію-валідатор для адрес електронної пошти. Перевірка повинна включати в себе:
 // дані до знака равлика(@), наявність равлика, крапку яка знаходиться не меньше ніж на 2 символ далі після равлика,
-// функція не чутлива до регістру (some@email.com,SOME@EMAIL.COM,some@EMAIL.com, і тд - однакові значення)
+// функція не чутлива до регістру (some@email.com,SOME@EMAIL.COM,some@EMAIL.com, ітд - однакові значення)
 // Протестувати на значеннях
 // someemail@gmail.com
 // someeMAIL@gmail.com
@@ -123,99 +123,181 @@ console.log(capitalize(str1));
 // Примітка
 // Для тих, хто дуже розумний, та почне використовувати регулярні вирази одразу "ні".
 // Своїм мозком подумайте над протоколом, з регулярками будете потім бавитись.
+const validator = (str) => {
+    if (!str.startsWith('@') && str.includes('@') &&
+        str.includes('.', str.indexOf('@') + 3)) {   //3 невключно
+        console.log('valid')
+    } else {
+        console.log('not valid')
+    }
+}
+validator('someemail@gmail.com');
+validator('someeMAIL@gmail.com');
+validator('someeMAIL@i.ua');
+validator('some.email@gmail.com');
 
+// 11 Є масив відсортувати його в спадаючому порядку за кількістю елементів в полі modules
+let coursesArray = [
+    {
+        title: 'JavaScript Complex',
+        monthDuration: 5,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js']
+    },
+    {
+        title: 'Java Complex',
+        monthDuration: 6,
+        hourDuration: 909,
+        modules: ['html',
+            'css',
+            'js',
+            'mysql',
+            'mongodb',
+            'angular',
+            'aws',
+            'docker',
+            'git',
+            'java core',
+            'java advanced']
+    },
+    {
+        title: 'Python Complex',
+        monthDuration: 6,
+        hourDuration: 909,
+        modules: ['html',
+            'css',
+            'js',
+            'mysql',
+            'mongodb',
+            'angular',
+            'aws',
+            'docker',
+            'python core',
+            'python advanced']
+    },
+    {
+        title: 'QA Complex',
+        monthDuration: 4,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'git', 'QA/QC']
+    },
+    {
+        title: 'FullStack',
+        monthDuration: 7,
+        hourDuration: 909,
+        modules: ['html',
+            'css',
+            'js',
+            'mysql',
+            'mongodb',
+            'react',
+            'angular',
+            'aws',
+            'docker',
+            'git',
+            'node.js',
+            'python',
+            'java']
+    },
+    {
+        title: 'Frontend',
+        monthDuration: 4,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'sass']
+    }
+];
+const sorter = (arr) => arr.sort((a, b) => a.modules.length - b.modules.length);
+console.log(sorter(coursesArray));
 
-
-
-
-
-
-// 11 Є масив let coursesArray = [
-//     {
-//         title: 'JavaScript Complex',
-//         monthDuration: 5,
-//         hourDuration: 909,
-//         modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js']
-//     },
-//     {
-//         title: 'Java Complex',
-//         monthDuration: 6,
-//         hourDuration: 909,
-//         modules: ['html',
-//             'css',
-//             'js',
-//             'mysql',
-//             'mongodb',
-//             'angular',
-//             'aws',
-//             'docker',
-//             'git',
-//             'java core',
-//             'java advanced']
-//     },
-//     {
-//         title: 'Python Complex',
-//         monthDuration: 6,
-//         hourDuration: 909,
-//         modules: ['html',
-//             'css',
-//             'js',
-//             'mysql',
-//             'mongodb',
-//             'angular',
-//             'aws',
-//             'docker',
-//             'python core',
-//             'python advanced']
-//     },
-//     {
-//         title: 'QA Complex',
-//         monthDuration: 4,
-//         hourDuration: 909,
-//         modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'git', 'QA/QC']
-//     },
-//     {
-//         title: 'FullStack',
-//         monthDuration: 7,
-//         hourDuration: 909,
-//         modules: ['html',
-//             'css',
-//             'js',
-//             'mysql',
-//             'mongodb',
-//             'react',
-//             'angular',
-//             'aws',
-//             'docker',
-//             'git',
-//             'node.js',
-//             'python',
-//             'java']
-//     },
-//     {
-//         title: 'Frontend',
-//         monthDuration: 4,
-//         hourDuration: 909,
-//         modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'sass']
-//     }
-// ];
-//
-//
-// відсортувати його в спадаючому порядку за кількістю елементів в полі modules
-//
-// - Напишіть функцію count(str, stringsearch), яка повертає кількість символів stringsearch у рядку str.
-//     let symb = "о", str = "Астрономия это наука о небесных объектах";
+// 12 Напишіть функцію count(str, stringsearch), яка повертає кількість символів stringsearch у рядку str.
+// let symb = "о", str = "Астрономія - це наука про небесні об'єкти";
 // document.writeln(count(str, symb)) // 5
-//
-// - Напишіть функцію cutString(str, n), яка видаляє зайві слова з рядка str, залишивши у ній n слів.
-//     let str = "Сила тяжести приложена к центру масс тела";
-// document.writeln(cutString(str, 5)) // 'Сила тяжести приложена к центру'
-//
-//
-// -стоврити масив книжок (назва, кількість сторінок, автори , жанри).
-// -знайти наібльшу книжку.
-// - знайти книжку/ки з найбільшою кількістю жанрів
-// - знайти книжку/ки з найдовшою назвою
-// - знайти книжку/ки які писали 2 автори
-// - знайти книжку/ки які писав 1 автор
-// - вісортувати книжки по кількості сторінок по зростанню
+let smbl = 'о';
+let str1ng = 'Астрономія це наука про небесні обєкти'
+const count = (str, symb) => {
+    let count = 0;
+    let value = str.split('');
+
+    for (const item of value) {
+        if (item === symb) {
+            count++;
+        }
+    }
+    return count
+}
+console.log(count(str1ng, smbl))
+
+// 13 Напишіть функцію cutString(str, n), яка видаляє зайві слова з рядка str, залишивши у ній n слів.
+// let str = "Сила тяжіння прикладена до центру мас тіла";
+// document.writeln(cutString(str, 5)) // 'Сила тяжіння прикладена до центру'
+const cutStr1ng = (str, n) => str.split(' ').splice(0, n).join(' ');
+console.log(cutStr1ng('Сила тяжіння прикладена до центру мас тіла', 5));
+
+// 14 Є масив книжок (назва, кількість сторінок, автори , жанри).
+// а знайти набільшу книжку;
+let books = [{name: 'Шлях митця', pagecount: 98, author: 'Джулія Кемерон', genre: 'Допоможи собі сам'},
+    {
+        name: 'Купи собі той довбаний букет',
+        pagecount: 250,
+        author: 'Тара Шустер',
+        genre: ['Мотиваційна література', 'Саморозвиток']
+    },
+    {name: 'Не тупи', pagecount: 147, author: 'Джен Сінсеро', genre: 'Мотиваційна література'},
+    {name: 'Не ний', pagecount: 164, author: 'Джен Сінсеро', genre: 'Мотиваційна література'},
+    {name: 'Життєвий план', pagecount: 342, author: ['Девід Сінклер', 'Метью Лаплентом'], genre: 'Саморозвиток'}
+]
+let bigBook = (arr) => {
+    let max = arr[0].pagecount;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].pagecount > max) {
+            max = arr[i].pagecount
+        }
+    }
+    return max
+}
+console.log(bigBook(books))
+
+// б знайти книжку з найбільшою кількістю жанрів;
+let genres = (arr) => {
+    let max = arr[0].genre;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].genre > max) {
+            max = arr[i].genre;
+        }
+    }
+    return max
+}
+console.log(genres(books))
+
+// в знайти книжку з найдовшою назвою;
+let longName = (arr) => {
+    let long = arr[0].name.length;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].name.length > long) {
+            long = arr[i].name
+        }
+    }
+    return long
+}
+console.log(longName(books));
+
+// г знайти книжку, які писали 2 автори;
+let authors = (arr) => {
+    for (const element of arr) {
+        if (element.author.length === 2) {
+            return element
+        }
+    }
+}
+console.log(authors(books));
+
+const authors2 = (arr) => arr.filter(value => value.author.length === 2);
+console.log(authors2(books));
+
+// д знайти книжки, які писав 1 автор;
+const author1 = (arr) => arr.filter(value => value.author.length > 2);
+console.log(author1(books));
+
+// е вісортувати книжки по кількості сторінок за зростанням.
+let sortBooks = (arr) => arr.sort((a, b) => a.pagecount - b.pagecount);
+console.log(sortBooks(books))
