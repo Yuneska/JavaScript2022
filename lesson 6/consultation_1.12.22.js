@@ -84,4 +84,78 @@ const nmbr= (numbers)=>{
     return arr.join('+');
 }
 
-console.log(nmbr(47003))
+console.log(nmbr(47003));
+
+// Третій варіант розв'язку завдання'
+let foo=(str)=>`${str}`.split('').reduce((acc,value, index, array)=>
+value!=='0'? [...acc,value+'0'.repeat(array.length-1-index)]: acc, []).join('+');
+    console.log(foo(12345));
+    // Reduce-має чотири параметри: acc(previous value) - аккумулятор(накопичувач), місце, де буде в нас щось складатися, воно  має в нас початковий стан
+// value(next value)-наш поточний елемент масиву\об'єкту
+// index-індексація масиву;
+// array-сам масив.
+// Reduce все розставляє по поличкам, накопичувач.
+// ... acc таким чином розкладаємо наш аккумулятор по частинам.
+
+
+
+//Знайти заміжніх
+const users=[
+    {name:'vasya',
+    age:22,
+    isMarried: true},
+    {
+        name:'anya',
+        age:22,
+        isMarried: false
+    },
+    {
+        name:'ihor',
+        age:32,
+        isMarried: true
+    }
+]
+
+//ПЕРШИЙ варіант розв'язку
+let reduce=users.reduce((acc,value,index)=>value.isMarried?[...acc,{...value, flat: index+1}]: acc,[])
+console.log(reduce); //створили новий масив з обєктами,які одружені та мають квартири
+console.log(users); //оригінал залишився незмінним
+
+//acc-це пустий масив, де ми будемо вкладати нові значення
+//...acc-розкладаємо аккумулятор для того, щою запровадити сюди якусь нову інфу
+//...value-розкладаємо окремо name, age, isMarried  та додаємо ще туди flat
+
+//ДРУГИЙ варіант розв'язку
+let reduce2=users.reduce((acc,value,index)=>{
+    if(value.isMarried){
+        value.flat=index+1;
+        acc.push(value);
+    }
+    return acc;
+},[])
+console.log(reduce2)
+
+let arr=[...users];   //скопіювали наш масив
+console.log(...arr);  //роклали наш масив по обєктам
+
+let arr1=[1,2,3,4,5];
+
+let nomer=arr1.reduce((acc,value)=>{
+    let res=acc+value;
+    console.log(acc);
+    console.log(value);
+    console.log('-----');
+
+    return res
+},0);
+console.log(nomer)
+
+
+
+
+
+
+
+
+
+
