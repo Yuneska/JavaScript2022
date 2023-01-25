@@ -131,7 +131,7 @@ function  Admin(login, password){
                                              // this.password=password;
      this.authority=authority
  }                         //таким чином зробили наслідування\розширення
-// скорочено буде так
+// Скорочено буде так
 function SuperAdmin1 (login, password, authority){
     Admin.apply(this, arguments)  //arguments-це масив всіх моїх аргументів, тобто [login, password, authority]
     //Але!!! в Admin існує тільки два аргументи тільки login та password, authority буде ігнорований.
