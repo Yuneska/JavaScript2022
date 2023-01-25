@@ -120,6 +120,25 @@ superUser.greeting()
 
 
 
+function  Admin(login, password){
+    this.login=login;
+    this.password=password;
+
+}
+ function SuperAdmin(login, password, authority){
+    Admin.call(this, login, password)     //this (ще ненароджений майбутній об'єкт) - це майбутній об'єкт, який буде породженийфункцією-конструктором SuperAdmin
+                                              //підміна контексту  this.login=login;
+                                             // this.password=password;
+     this.authority=authority
+ }                         //таким чином зробили наслідування\розширення
+// скорочено буде так
+function SuperAdmin1 (login, password, authority){
+    Admin.apply(this, arguments)  //arguments-це масив всіх моїх аргументів, тобто [login, password, authority]
+    //Але!!! в Admin існує тільки два аргументи тільки login та password, authority буде ігнорований.
+    // Послідовність аргументів обов'язково повинна зберігатись!
+
+    this.authority=authority
+}
 
 
 
