@@ -83,12 +83,34 @@ for (const li of liList) {
 }
 
 //Форми - це точка\компонент\елемент сторінки, який збирає інформацію та спроможний її відправити у базу даних.
+//У кожного input має бути name
 
+//Параметри урли (url) - спосіб перенесення інформації:
+// http://localhost:63342/JavaScript2022/lesson9/lesson_9_lection.html?userame=Inesa&email=inesa98%40i.ua&age=24
+//Таким чином передається інформація між клієнтом та базою даних
 
+// Знаходимо форми:
+//Forms - повертає нам масив всіх форм. Форми мають, або name, або ідентифікатори
+let forms=document.forms;
+console.log(forms);
+console.log(document.forms.f1); //знаходить нам конкретну форму // вткористовували name of form
+let f2=document.forms.f2 //використовуємо ідентифікатор
+console.log(f2);
+f2.children; //поверне масив елементів, які є в f2
+console.log(f2.name.value); //зчитуємо значення name
+console.log(f2.surname.value);
+console.log(f2.vik.value);
 
+let children=f2.children;
+for(const child of children) {
+    let attribute = child.getAttribute("name");
+    if(attribute!= null && attribute!="")
+    console.log(attribute)
+}
+//Всі дані у формах за замовчуванням зі сторони клієнта з браузера передається тільки у стрінговому варіанті.
+//String - це 95% передачі інформації в мережі.
 
-
-
+//enctype="multipart/form-data" - форма спроможна відправляти якісь файли
 
 
 

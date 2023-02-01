@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .ustyle {
+            background: blueviolet;
+        }
+    </style>
+</head>
+<body>
+<h1> hello </h1>
+<p class="asd">
+
+<ul class="users">
+
+</ul>
+
+</p>
+
+<form action="f1">
+    <input type="text" name="main"
+</form>
+<script>
+
+    let h1 = document.getElementsByTagName('h1')[0];
+
+
+    let main = document.forms.f1.main;
+    main.oninput = function () {
+        h1.innerText = main.value
+
+    }
+
+    let users = [{name: 'nikita', age: 25, status: false},
+        {name: 'oleksandr', age: 36, status: true},
+        {name: 'yura', age: 26, status: true},
+        {name: 'oleksiy', age: 14, status: true},
+        {name: 'vasya', age: 47, status: false}]
+
+    let div = document.createElement('div'); //У createElement вписуємо тільки назву самого тегу без зьобиків
+    document.body.appendChild(div); //appendChild -додає в body ільки один елемент,
+    // а Append може додавати декілька елементів черенз кому
+    //Нам потрібно створити елемент і кудись його додати.
+
+    //У випадку,якщо це пошук за тегом чи класом, то нам повертається колекція/псевдомасив
+    let pList = document.getElementsByTagName('p');
+    let p = pList[0]; //індекс [0] беремо з масиву перший елемент
+    p.appendChild(div);
+    div.innerText = "asdqwe";
+    div.setAttribute('qqq', 'qwe'); //перше назва атрибута, значення атрибута
+
+    let h1 = document.getElementsByTagName('h1')[0];
+    document.body.insertBefore(p, h1) //p перед h1 //переміщення елементів
+
+    //querySelector знаходить тільки ОДИН та ПЕРШИЙ елемент
+    let usersBlockList = document.getElementsByClassName('users');
+    let usersBlock1 = usersBlockList[0];
+
+    for (const user of users) {
+        console.log(user);
+        let li = document.createElement('li'); // скільки разів ми зробили ітерацій, стільки ж разів ми побудували елемент li
+        li.innerText = `${user.name} ${user.age} ${user.status}`;
+        li.classList.add('ustyle');
+        li.onclick = function (e) {
+            let text = li.innerHTML;   //this - зсилається на цей об'єкт з яким ми працюємо
+
+            //innerHTML працює при декількох кліках
+            //innerText працює тільки по одному кліку (витягає тільки сухий текст)
+            li.innerHTML = '<big>${text}</big>'
+        }
+        usersBlock1.appendChild(li); //В ul добавляємо li
+    }
+
+    //Event - подія (завантаження\перезавантаження сторінки, клікання та веденням мишею)
+    //e - event свідок нашої події
+    document.body.onmousemove = function (e) {
+        console.log(e.pageX, e.pageY)   //координати нашої миші в процесі нашої події
+
+        document.body.style.background = `rgb(${e.pageX}, ${e.pageY}, ${e.pageY})`   //rgb - red green blue
+    }
+
+    //addEventListener - на одну подію можна давати багато різноманітних функцій ( без on
+    document.body.addEventListener('click', function(e){
+        console.log(e.target);
+
+    })
+
+</script>
+
+</body>
+</html>
