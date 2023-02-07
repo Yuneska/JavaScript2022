@@ -40,7 +40,7 @@ console.log(elementByTagName);
 // і ця фотографія залишається незмінною в цьому місці в процесі нашої роботи.
 
 //query collection -  входить до Not Live Collection
-//querySelector -дозволяє за допомогою css стандартного синтаксису зробити пошук по чомусь, можна прописувати, що завгодно
+//querySelector - дозволяє за допомогою css стандартного синтаксису зробити пошук по чомусь, можна прописувати, що завгодно
 //querySelector по певному селекту(відбору) знайде тільки ОДИН та ПЕРШИЙ елемент.
 let element = document.querySelector('.menu');
 console.log(element);
