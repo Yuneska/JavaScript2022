@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>details page</h1>
+<script>
+  //  new URL - юіюліотечний клас, який займається урлами.
+  //location - цедоступ до інформації з вашою локацією
+  //href - це доступ до конкретного користувача, точки, що нам потрібна.
+  let url= new URL(location.href); //з браузера зчитуємо, що там в адресній строці знаходиться
+  console.log(url);
+  let id=url.searchParams.get('id'); //з урли ми беремо поточний параметр, який нам треба.
+  console.log(id);
+
+
+  let apiUrl='https://reqres.in/api/users/';
+  fetch (apiUrl + id) //тут без user.id, бо ми id перехопили\взяли вже з урли.
+      //динамічний параметр урли, буде з'являтися те, що нам треба
+  .then(response=>response.json())
+  .then(value=> {
+      console.log(value.data);
+      let {data: userData }=value; //витягнули data із value.
+     let div= document.createElement('div');
+      let h2=document.createElement('h2');
+      h2.innerText=`${userData.id} ${userData.first_name} ${userData.last_name} ${userData.email}`;
+
+      let img=document.createElement('img');
+      img.src=userData.avatar;
+      div.append(h2, img);
+
+      //якби в середині об'єкта були ще якісь внутрішні об'єкти, то ми б звертались так
+      //userData.obj.name
+
+      document.body.appendChild(div);
+
+
+  })
+
+
+</script>
+
+</body>
+</html>
