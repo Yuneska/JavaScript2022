@@ -28,7 +28,7 @@ fetch(`https://jsonplaceholder.typicode.com/users`)
             li.innerText=`${user.id}  ${user.name}`;
             container.appendChild(li);
 
-            let a=document.createElement('a');  //a- anchor - створює посилання на якийсь певний лінк.
+            let anchor=document.createElement('a');  //a- anchor - створює посилання на якийсь певний лінк.
             anchor.innerText='click me';
             li.append(anchor);
             anchor.href=`user-details.html?data=${user.id}`;
