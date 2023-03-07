@@ -8,12 +8,13 @@
 
 <button class="btn">show posts</button>
 <div class="target"></div>
-
+<a href="favs.html">To favorites</a>
 <script>
     let target=document.querySelector('.target');
     let btn=document.querySelector('.btn');
     btn.onclick = function(){
 
+let favsArr=JSON.parse(localStorage.getItem('favs')) || [];
 
         fetch('https://jsonplaceholder.typicode.com/posts')
         .then(response=> response.json())
@@ -26,7 +27,17 @@
                 let a= document.createElement('a');
                 a.innerText='details about post';
                 a.href='post-details.html?post='+ JSON.stringify(post); //ми зробимо свій пост стрінгою і запхаємо її у параметр урли.
-                div.appendChild(a);
+
+                let btn=document.createElement('button');
+                btn.innerText='add to favorite';
+                btn.onclick=function (){
+                    favsArr.push(post);
+                    localStorage.setItem('favs', JSON.stringify(favsArr))
+                }
+
+
+
+                div.append(a,btn);
                 document.body.appendChild(div)
             }
         })
@@ -34,4 +45,4 @@
 
 </script>
 </body>
-</html>
+</html>;

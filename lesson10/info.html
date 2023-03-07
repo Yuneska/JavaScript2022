@@ -5,15 +5,90 @@
     <title>Title</title>
 </head>
 <body>
+<h1>Hello</h1>
+
+<p class="asd"></p>
+
+
+<ul class="users"></ul>
+
+<form name="f1">
+    <input type="text" name="main">
+
+</form>
+
+<div> Loremdfvmbgf nbkl;dkmnjvlvdmknjl,mvfnkbvlfdmn kl, nk,nkv
+    vkfdl,v ckjfldvkmnjflv, <b>jkljhjiklhbiokljnhbkl</b>mfklv,m fvkl,.fm kl,v.mkl,f.m klvf,
+    jkvfmvklfmv <i>njkl,mkl;mk</i> kvfmvkiblgfmbkiogflmfdkmvjdfknljfklnljgn bg
+    f bkmkbbm kbm kbm kbmkb,bk bmk bm,
+</div>
+
+<ul>
+    <li>data 1</li>
+    <li>data 2</li>
+    <li>data 3</li>
+    <li>data 4</li>
+    <li>data 5</li>
+</ul>
 <script>
-    //localStorage - це локальне сховище нашого браузера\щось накшталт кешування, але ми ним керуємо.
-    //Знаходиться у браузері, у розділі application. Це база даних, яка прив'язана суто до самого браузера.
-    //Тобто
-    let date = new Date () //це типу час.
-    console.log(date) //і ми будемо бачити, коли людина заходила.
+    //Recursion - це коли функція викликає сама себе.
 
+    // function explorer(htmlElement){
+    //     console.log(htmlElement);
+    //    let children= htmlElement.children; //поверне нам потенційно внутрішні елементи.
+    //     if (children.length !=0){  //Чи є внутрішні елемнти?
+    //      for (const child of children){
+    //          explorer(child)
+    //      }
+    //     }
+    // }
+    //
+    // explorer(document.body)
 
-    localStorage.setItem('lastSession',date )  //перше-це назва ключа, друге-обов'язково повинне бути стрінгою
+    //Хочемо побудувати html дерево
+    let tree = {
+        name: 'asd',
+        age: 23,
+        wife: {
+            name: 'qwe',
+            age: 34,
+            father: {
+                name: 'vasya',
+                age: 54
+            }
+        }
+    }
+
+    function treeBuilder(obj) {
+        for (const key in obj) {
+            if (typeof obj[key] !== 'object') {
+
+                let div = document.createElement('div');
+                div.innerText = key + " " + obj[key];
+                document.body.append(div);
+            }
+
+            if (typeof obj[key] === 'object') {
+                treeBuilder(obj[key]);
+            }
+        }
+    }
+
+    treeBuilder(tree);
+
+    //Як можна проітерувати масив за допомогою рекурсії?
+    function asd(index = 0, arr) {
+        console.log(arr[index]);
+        index++;
+        if (index < arr.length) {
+            asd(index, arr);      //викликаємо функцію ще раз з оновленим значенням індекса.
+        }
+    }
+
+    //Якщо щось return - може викинути нас з функції.
+
+    asd(0, [11, 22, 33, 44, 55])
+
 
 </script>
 </body>
