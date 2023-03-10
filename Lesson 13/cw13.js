@@ -7,9 +7,9 @@ function clearHouse (isJobDone){
         }else{
             document.write('No money, No honey')
         }
-    } timeout:2000)
-}
+    } 2000)
+};
 
-clearHouse (isJobDone: true)
+clearHouse (isJobDone (true));
 
 console.log(money)

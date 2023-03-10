@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Error first, data last - золоте правило написання callbacks.
+    //return new Promise (resolve, reject){}
+    //return new Promise - об'єкт класу проміс, це спосіб синхронізації ассинхроних функцій\ обробка ассинхронності.
+    //(коли одна функція впливає на роботу іншої, тому маємо їх синхронізувати)
+    //має три стани:
+    //Pending- в очікуванні\ в процесі ррботи;
+    //Resolve - вирішення\успішне виконання\ може приймати щось одне;
+    //Reject - відхилення\неуспішне виконання.
+    //Промисифікована функція, якщо повертає нам якийсь return new Promise.
+    //Promise chain - цепочка промісів. Щось заретьорнили і передали це значення у наступний .then
+
+    // Catch - ловимо помилку
+    // .catch (e=>{
+    //     console.warn(e) //warn - підсвітлює нам помилку жовтим кольором.
+    // })
+
+    //Finally - буде завжди виконуватись
+    // .finally (()=>{
+    // console.log('Finally')})
+
+    //пишемо ассинхронні функції у синхронному стилі.
+    //Await - все буде синхронізовано завдяки слову await. Означає, почекай поки зробиться.
+    //ассинхронна функція почекай поки виконаєть goWork.
+    //Мусимо чекати, оскільки функції одна від одної залежить
+    //Коли вони не залежить одна від одної , їх можна запускати одночасно.
+    //async function - ассинхронна обгортка
+
+    //let - змінна, яка в майбутньому може переприсвоюватись
+    //const - змінна, яка в майбутньому буде сталою й не буде переприсвоюватись.
+
+    // try catch - блок  потенційно небезпечного (невірного) коду.
+    async function myDay (){
+    try {
+            const workResult = await goWork(true)
+            console.log(workResult, 'WorkResult')
+
+        const restStaff=await buyStaff (money);
+        console.log(restStaff, 'restStaff');
+
+        const endDayRest= await goEat(restStaff);
+        console.log(endDayRest,'endDayRest')
+    }catch (e){
+        console.log('ERRRROR', e);
+    }
+    }
+
+</script>
+</body>
+</html>
