@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    const url = new URL(location.href);
+    const id = url.searchParams.get('id');
+
+    fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .then(response => response.json())
+        .then(user => {
+            console.log(user.data);
+            let {data: userData} = user; //витягнули data із user.
+
+            let h2 = document.createElement('h2');
+            h2.innerText = `${user.id}) ${user.name}
+             Username: ${user.username}
+        Email: ${user.email}
+         Phone: ${user.phone}
+         Website: ${user.website}`;
+
+            document.body.appendChild(h2)
+        })
+
+
+</script>
+
+</body>
+</html>
