@@ -30,35 +30,13 @@
                 div.appendChild(btn);
 
                 btn.onclick = function (){
-                    location.href=`user-details.html?id=${user.id}`
+                    location.href='user-details.html?id='+user.id;
                 }
             }
         })
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // На сторінці post-details.html:
-    // 7 Вивести всю, без виключення, інформацію про об'єкт post на який клікнули .
-    // 8 Нижчє інформаці про пост, вивести всі коментарі поточного поста (ендпоінт  - https://jsonplaceholder.typicode.com/posts/POST_ID/comments)
-    //
     // Стилизація проєкта:
     // index.html - всі блоки з user - по 2 в рядок. кнопки/аосилвння розташувати під інформацією про user.
     //     user-details.html - блок з інфою про user зверху сторінки.

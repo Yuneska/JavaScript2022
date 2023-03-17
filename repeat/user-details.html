@@ -15,8 +15,6 @@
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
         .then(response => response.json())
         .then(user => {
-            console.log(user.data);
-            const {data: userData} = user; //витягнули data із user.
 
             const h2 = document.createElement('h2');
             h2.innerText = `${user.id}) ${user.name}
@@ -29,49 +27,71 @@
         })
 
 
-
     // На сторінці user-details.html:
     // 4 Вивести всю, без виключення, інформацію про об'єкт user на який клікнули.
-    // 5 Додати кнопку "post of current user", при кліку на яку, з'являються title всіх постів поточного юзера
-    // (для получения постов используйте эндпоинт https://jsonplaceholder.typicode.com/users/USER_ID/posts)
-    // 6 Каждому посту додати кнопку/посилання, при кліку на яку відбувається перехід на сторінку post-details.html, котра має детальну інфу про поточний пост.
-    //
-    fetch (`https://jsonplaceholder.typicode.com/users/${id}`)
-        .then(response=> response.json())
+    fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .then(response => response.json())
         .then(user => {
+
             for (const value in user) {
-                let userDiv = document.createElement('div');
-                if (typeof user[value] == 'object') {
-                    userDiv.innerText = `${value} ${user[value]}`;
+                const userDiv = document.createElement('div');
+                if (typeof user[value] !== 'object') {
+                    userDiv.innerText = `${value} --- ${user[value]}`;
                 } else {
                     userDiv.innerText = `${value}`
 
                     for (const key in user[value]) {
-                        let userDiv1 = document.createElement('div');
-                        if (typeof user[value][key] == 'object') {
-                            userDiv1.innerText = `${key} : ${user[value][key]}`;
+                        const userDiv1 = document.createElement('div');
+                        if (typeof user[value][key] !== 'object') {
+                            userDiv1.innerText = `${key} --- ${user[value][key]}`;
                         } else {
                             userDiv1.innerText = `${key}`
 
                             for (const item in user[value][key]) {
-                                let userDiv2 = document.createElement('div');
-                                if (typeof user[value][key][item] == 'object') {
-                                    userDiv2.innerText = `${item}: ${user[value][key][item]}`;
-                                } else {
-                                    userDiv2.innerText = `${item}`
+                                const userDiv2 = document.createElement('div');
+                                if (typeof user[value][key][item] !== 'object') {
+                                    userDiv2.innerText = `${item} --- ${user[value][key][item]}`;
                                 }
                                 userDiv1.appendChild(userDiv2);
                             }
-
-                            userDiv.appendChild(userDiv1);
                         }
+                        userDiv.appendChild(userDiv1);
                     }
-                    document.body.appendChild(userDiv)
+                }
+                document.body.appendChild(userDiv)
+            }
+        });
 
+    // 5 Додати кнопку "post of current user", при кліку на яку, з'являються title всіх постів поточного юзера
+    // (для полученння постів використовуйте ендпоінт https://jsonplaceholder.typicode.com/users/USER_ID/posts)
+    // 6 Кожному посту додати кнопку/посилання, при кліку на яку відбувається перехід на сторінку post-details.html,
+    // котра має детальну інфу про поточний пост.
+    fetch(`https://jsonplaceholder.typicode.com/users/${id}/posts`)
+        .then(resp => resp.json())
+        .then(posts => {
+            const btn = document.createElement('button');
+            btn.innerText = "Post of current user";
+            document.body.appendChild(btn);
 
+            btn.onclick = function () {
+                for (const post of posts) {
+                    const ul = document.createElement('ul');
+                    const li = document.createElement('li');
+                    document.body.appendChild(ul);
+                    ul.appendChild(li);
+
+                    li.innerText = `${post.title}`;
+
+                    let a = document.createElement('a');
+                    a.href = `post-details.html?id=${post.id}`;
+                    a.innerText = ' post details';
+                    li.appendChild(a)
                 }
             }
+
         })
+
+
 </script>
 
 </body>
