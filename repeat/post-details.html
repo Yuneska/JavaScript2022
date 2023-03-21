@@ -15,15 +15,15 @@
     // (ендпоінт  - https://jsonplaceholder.typicode.com/posts/POST_ID/comments)
 
     const url=new URL (location.href);
-    const post=url.searchParams.get('id');
-console.log(post)
+    const pst=url.searchParams.get('postId');
+ console.log(pst)
 
-
-    fetch(`https://jsonplaceholder.typicode.com/${postId}`)
+    fetch(`https://jsonplaceholder.typicode.com/posts/${pst}`)
     .then(response => response.json)
-    .then(post=>{
+    .then(post =>{
+
 const div=document.createElement('div');
-div.innerText=`user_Id --- ${post.userId}
+div.innerText=`userId --- ${post.userId}
 id --- ${post.id}
 title --- ${post.title}
 body --- ${post.body}`

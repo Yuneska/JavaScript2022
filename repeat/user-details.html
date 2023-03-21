@@ -83,7 +83,7 @@
                     li.innerText = `${post.title}`;
 
                     let a = document.createElement('a');
-                    a.href = `post-details.html?id=${post.id}`;
+                    a.href=`post-details.html?postId=${post.userId}`;
                     a.innerText = ' post details';
                     li.appendChild(a)
                 }

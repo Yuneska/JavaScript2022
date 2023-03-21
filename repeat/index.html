@@ -6,44 +6,77 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        .users {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .user {
+            background: cornflowerblue;
+            width:200px;
+            height: 100px;
+            margin: 10px;
+            margin-left: calc(25% - 100px);
+            margin-right: calc(25% - 100px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .btn{
+            background: silver;
+            display: flex;
+            flex-wrap: wrap;
+            margin:5px;
+
+        }
+    </style>
 </head>
 <body>
+<div class="users"></div>
 <script>
     // 1 Отримати масив об'єктів з endpoint`а https://jsonplaceholder.typicode.com/users
+    const usersContainer = document.getElementsByClassName('users');
+
     fetch('https://jsonplaceholder.typicode.com/users')
-    .then(response => response.json())
-    .then(users => console.log(users))
+        .then(response => response.json())
+        .then(users => console.log(users))
 
     // 2 Вивести id,name всіх user в index.html. Окремий блок для кожного user.
     // 3 Додати кожному блоку кнопку/посилання, при кліку на яку відбувається перехід на сторінку user-details.html,
     // котра має детальну інфорацію про об'єкт на який клікнули.
 
-    fetch ('https://jsonplaceholder.typicode.com/users')
-        .then (response => response.json())
-        .then (users => {
-            for (const user of users){
-                const div=document.createElement('div');
-                div.innerText=`${user.id}) ${user.name}`
-                document.body.appendChild(div);
-                const btn=document.createElement('button');
-                btn.innerText='Детальна інформація';
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(users => {
+            for (const user of users) {
+                const div = document.createElement('div');
+                div.innerText = `${user.id}) ${user.name}`;
+
+                div.classList.add('user');
+                const diV=document.body.appendChild(div);
+
+
+                const btn = document.createElement('button');
+                btn.innerText = 'Детальна інформація';
+                btn.classList.add('btn')
                 div.appendChild(btn);
 
-                btn.onclick = function (){
-                    location.href='user-details.html?id='+user.id;
+                btn.onclick = function () {
+                    location.href = 'user-details.html?id=' + user.id;
                 }
             }
         })
 
 
-
     // Стилизація проєкта:
-    // index.html - всі блоки з user - по 2 в рядок. кнопки/аосилвння розташувати під інформацією про user.
+    // index.html - всі блоки з user - по 2 в рядок. кнопки/посилання розташувати під інформацією про user.
     //     user-details.html - блок з інфою про user зверху сторінки.
-    //     Кнопка нижчє, на 90% ширини сторінки, по центру.
-    //     блоки з короткою іфною про post - в ряд по 5 .
+    //     Кнопка нижчє, на 90% ширини сторінки, по центру блоки з короткою інфою про post - в ряд по 5 .
     //     post-details.html - блок з інфою про пост зверху. Коментарі - по 4 в ряд.
-    //     Всі елементи котрі характеризують users, posts, comments візуалізувати, так, щоб було видно що це блоки (дати фон. марджини і тд)
+    //     Всі елементи котрі характеризують users, posts, comments візуалізувати, так,
+    //     щоб було видно що це блоки (дати фон. марджини і тд)
 
 </script>
 </body>
