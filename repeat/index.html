@@ -10,26 +10,27 @@
         .users {
             display: flex;
             flex-wrap: wrap;
+            flex-direction: row;
         }
 
         .user {
-            background: cornflowerblue;
+            background: slateblue;
+            color:white;
             width:200px;
             height: 100px;
             margin: 10px;
-            margin-left: calc(25% - 100px);
-            margin-right: calc(25% - 100px);
+            margin-left: 50px;
+            margin-right: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
         }
         .btn{
-            background: silver;
+            background: slategrey;
             display: flex;
             flex-wrap: wrap;
-            margin:5px;
-
+            margin:10px;
         }
     </style>
 </head>
@@ -37,8 +38,7 @@
 <div class="users"></div>
 <script>
     // 1 Отримати масив об'єктів з endpoint`а https://jsonplaceholder.typicode.com/users
-    const usersContainer = document.getElementsByClassName('users');
-
+    const usersContainer = document.getElementsByClassName('users')[0];
     fetch('https://jsonplaceholder.typicode.com/users')
         .then(response => response.json())
         .then(users => console.log(users))
@@ -55,8 +55,7 @@
                 div.innerText = `${user.id}) ${user.name}`;
 
                 div.classList.add('user');
-                const diV=document.body.appendChild(div);
-
+               usersContainer.appendChild(div);
 
                 const btn = document.createElement('button');
                 btn.innerText = 'Детальна інформація';
@@ -66,17 +65,18 @@
                 btn.onclick = function () {
                     location.href = 'user-details.html?id=' + user.id;
                 }
+
             }
         })
 
 
     // Стилизація проєкта:
     // index.html - всі блоки з user - по 2 в рядок. кнопки/посилання розташувати під інформацією про user.
-    //     user-details.html - блок з інфою про user зверху сторінки.
-    //     Кнопка нижчє, на 90% ширини сторінки, по центру блоки з короткою інфою про post - в ряд по 5 .
-    //     post-details.html - блок з інфою про пост зверху. Коментарі - по 4 в ряд.
-    //     Всі елементи котрі характеризують users, posts, comments візуалізувати, так,
-    //     щоб було видно що це блоки (дати фон. марджини і тд)
+    // user-details.html - блок з інфою про user зверху сторінки.
+    // Кнопка нижчє, на 90% ширини сторінки, по центру блоки з короткою інфою про post - в ряд по 5 .
+    // post-details.html - блок з інфою про пост зверху. Коментарі - по 4 в ряд.
+    // Всі елементи котрі характеризують users, posts, comments візуалізувати, так,
+    // щоб було видно що це блоки (дати фон. марджини і тд)
 
 </script>
 </body>

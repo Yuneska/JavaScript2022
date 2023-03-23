@@ -6,6 +6,45 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        .user-details {display: block;
+            background: slategrey;
+            color: white;
+            width: 90%;
+            margin: 0 auto;
+            padding: 10px;
+
+        }
+
+        .btnpost {
+            background: slateblue;
+            color: white;
+            width: 90%;
+            margin: 10px auto;
+            display: block;
+        }
+
+        .posts {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .post {
+            background: slategrey;
+            padding: 5px;
+            margin: 3px;
+            width: 17%;
+            height: 100px;
+        }
+        .link{
+            display: flex;
+            flex-wrap: wrap;
+            margin:5px;
+        }
+
+    </style>
 </head>
 <body>
 <script>
@@ -16,14 +55,14 @@
         .then(response => response.json())
         .then(user => {
 
-            const h2 = document.createElement('h2');
-            h2.innerText = `${user.id}) ${user.name}
+            const p = document.createElement('p');
+            p.innerText = `${user.id}) ${user.name}
              Username: ${user.username}
         Email: ${user.email}
          Phone: ${user.phone}
          Website: ${user.website}`;
-
-            document.body.appendChild(h2)
+            p.classList.add('user-details')
+            document.body.appendChild(p)
         })
 
 
@@ -33,24 +72,26 @@
         .then(response => response.json())
         .then(user => {
 
+            const usersCont = document.getElementsByClassName('user-details')[0];
+
             for (const value in user) {
                 const userDiv = document.createElement('div');
                 if (typeof user[value] !== 'object') {
-                    userDiv.innerText = `${value} --- ${user[value]}`;
+                    userDiv.innerText = `${value} - ${user[value]}`;
                 } else {
                     userDiv.innerText = `${value}`
 
                     for (const key in user[value]) {
                         const userDiv1 = document.createElement('div');
                         if (typeof user[value][key] !== 'object') {
-                            userDiv1.innerText = `${key} --- ${user[value][key]}`;
+                            userDiv1.innerText = `${key} - ${user[value][key]}`;
                         } else {
                             userDiv1.innerText = `${key}`
 
                             for (const item in user[value][key]) {
                                 const userDiv2 = document.createElement('div');
                                 if (typeof user[value][key][item] !== 'object') {
-                                    userDiv2.innerText = `${item} --- ${user[value][key][item]}`;
+                                    userDiv2.innerText = `${item} - ${user[value][key][item]}`;
                                 }
                                 userDiv1.appendChild(userDiv2);
                             }
@@ -58,7 +99,7 @@
                         userDiv.appendChild(userDiv1);
                     }
                 }
-                document.body.appendChild(userDiv)
+                usersCont.appendChild(userDiv)
             }
         });
 
@@ -70,25 +111,34 @@
         .then(resp => resp.json())
         .then(posts => {
             const btn = document.createElement('button');
+
             btn.innerText = "Post of current user";
+            btn.classList.add('btnpost');
             document.body.appendChild(btn);
 
             btn.onclick = function () {
-                for (const post of posts) {
-                    const ul = document.createElement('ul');
-                    const li = document.createElement('li');
-                    document.body.appendChild(ul);
-                    ul.appendChild(li);
+                const postsContainer = document.createElement('div');
+                postsContainer.classList.add('posts');
 
-                    li.innerText = `${post.title}`;
+                for (const post of posts) {
+                    const div = document.createElement('div');
+                    document.body.appendChild(div);
+
+                    div.classList.add('post');
+
+                    div.innerText = `${post.title}`;
 
                     let a = document.createElement('a');
-                    a.href=`post-details.html?postId=${post.userId}`;
+                    a.href = `post-details.html?postId=${post.userId}`;
                     a.innerText = ' post details';
-                    li.appendChild(a)
+                    a.classList.add('link')
+                    div.appendChild(a);
+
+                    postsContainer.appendChild(div);
+
+                    document.body.appendChild(postsContainer)
                 }
             }
-
         })
 
 
