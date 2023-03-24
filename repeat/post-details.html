@@ -6,6 +6,28 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        .infoPost{
+            box-sizing: border-box;
+            display: block;
+            background: cornsilk;
+            margin: 0 auto;
+            padding: 10px;
+        }
+.comments{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.comment{
+    background: teal;
+    padding: 5px;
+    margin: 10px;
+    width: 20%;
+    text-wrap: normal;
+  overflow: auto;
+ }
+    </style>
 </head>
 <body>
 <script>
@@ -23,10 +45,11 @@
     .then(post =>{
 console.log(post)
 const div=document.createElement('div');
-div.innerText=`userId +++ ${post.userId}
-id +++ ${post.id}
-title +++ ${post.title}
-body +++ ${post.body}`
+div.classList.add('infoPost');
+div.innerText=`userId - ${post.userId}
+id - ${post.id}
+title - ${post.title}
+body - ${post.body}`
 
         document.body.appendChild(div)
     })
@@ -35,14 +58,19 @@ body +++ ${post.body}`
     fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
     .then(response => response.json())
     .then(comments=>{
+        const divContainer=document.createElement('div');
+        divContainer.classList.add('comments');
+
         for(const comment of comments){
+            document.body.appendChild(divContainer)
             const div=document.createElement('div');
-            div.innerText=`postId---${comment.postId}
-            id---${comment.id}
-            name---${comment.name}
-            email---${comment.email}
-            body---${comment.body}`;
-            document.body.appendChild(div)
+            div.classList.add('comment')
+            div.innerText=`postId - ${comment.postId}
+            id - ${comment.id}
+            name - ${comment.name}
+            email - ${comment.email}
+            body - ${comment.body}`;
+            divContainer.appendChild(div)
         }
     })
 
